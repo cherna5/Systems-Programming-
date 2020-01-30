@@ -1,0 +1,182 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fmodern\fcharset0 Courier;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red254\green255\blue10;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c99555\c99475\c0;
+\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww13740\viewh19880\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 //========================================================================================\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./1 \
+behold! I will only tell you the secret password if you enter the random number I just generated!\
+1\
+you lose :(\
+\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ltrace ./1\
+\
+time(0)                                                                                                                      = 1569573345\
+srand(0x5d8dc9e1, 0x7fff68a7b798, 0x7fff68a7b7a8, 0x555a7e712310)                                                            = 0\
+rand(0x7fd361b2b1d0, 0x7fd361b2b740, 0x7fd361b2b1c4, 0x7fd361b2b1d0)                                                         = 0x51a862ca\
+puts("behold! I will only tell you the"...behold! I will only tell you the secret password if you enter the random number I just generated!\
+)                                                                                  = 98\
+__isoc99_scanf(0x555a7e7123b3, 0x7fff68a7b288, 0x7fff68a7b288, 0x7fd361850154\
+\
+getlogin_r(0x7fff68a7b290, 1024, 0x7fd361b2d8d0, 0)                                                                          = 0\
+puts("you lose :("you lose :(\
+)                \
+//========================================================================================\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./0\
+this one is a gimme! You don't have to do anything!\
+\
+you win! the secret is:\
+U1lXQVpUDgQ=\
+\
+\
+//========================================================================================\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ gdb ./1\
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git\
+Copyright (C) 2018 Free Software Foundation, Inc.\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\
+This is free software: you are free to change and redistribute it.\
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"\
+and "show warranty" for details.\
+This GDB was configured as "x86_64-linux-gnu".\
+Type "show configuration" for configuration details.\
+For bug reporting instructions, please see:\
+<http://www.gnu.org/software/gdb/bugs/>.\
+Find the GDB manual and other documentation resources online at:\
+<http://www.gnu.org/software/gdb/documentation/>.\
+For help, type "help".\
+Type "apropos word" to search for commands related to "word"...\
+Reading symbols from ./1...done.\
+(gdb) b password\
+Breakpoint 1 at 0xa45: file gdb.c, line 15.\
+(gdb) r\
+Starting program: /nfsmnt/cshome/cherna83/CS361/HW/HW2/homework-2-cherna5/1 \
+\
+Breakpoint 1, password () at gdb.c:15\
+15	gdb.c: No such file or directory.\
+(gdb) ni\
+0x0000555555554a4e	15	in gdb.c\
+(gdb) \
+0x0000555555554a52	15	in gdb.c\
+.\
+.\
+.\
+.\
+.\
+(gdb) \
+0x0000555555554a84	20	in gdb.c\
+(gdb) \
+behold! I will only tell you the secret password if you enter the random number I just generated!\
+21	in gdb.c\
+(gdb) info locals\
+randomnumber = \cf3 \cb4 1001957455\cf2 \cb1 \
+attempt = 0\
+username = "\\301X\\335\\367\\377\\177\\000\\000hDUU\\001\\000\\000\\000\\360\\345\\377\\377\\377\\177\\000\\000\\000\\346\\377\\377\\377\\177\\000\\000\\310\\344\\377\\367\\377\\177\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\240\\347\\377\\377\\377\\177\\000\\000\\a\\000\\000\\000\\000\\000\\000\\000\\377\\377\\377\\377\\000\\000\\000\\000p\\341\\377\\367\\377\\177\\000\\000
+\f1 \'c8\'5d
+\f0 \\367\\377\\177\\000\\000\\000\\220\\376\\367\\377\\177", '\\000' <repeats 26 times>, "\\b\\242\\377\\367\\377\\177\\000\\000\\000\\000\\000\\000 ", '\\000' <repeats 19 times>, "h^\\335\\367\\377\\177\\000\\000\\240\\347\\377\\377\\377\\177\\000\\000\\a\\000\\000\\000\\000\\000\\000\\000\\200T\\335\\367\\377\\177\\000\\000\\360\\331\\377\\367\\377\\177\\000\\000\\a\\000\\000\\000\\b\\000\\000\\000\\371\\032"...\
+(gdb) ni\
+0x0000555555554a90	21	in gdb.c\
+(gdb) \
+0x0000555555554a97	21	in gdb.c\
+.\
+.\
+.\
+.\
+(gdb) \
+[Thread debugging using libthread_db enabled]\
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".\
+24	in gdb.c\
+(gdb) \
+0x0000555555554adc	25	in gdb.c\
+.\
+.\
+.\
+\
+(gdb) \
+0x0000555555554b03	25	in gdb.c\
+(gdb) \
+you win! the secret is:\
+UlpWRltXDws=\
+27	in gdb.c\
+\
+\
+//========================================================================================\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./2\
+The password is the "CURLcode" without quotes if the call to curl_easy_perform was successful. Hint: has the pattern "X_X".\
+You may not use gdb to answer this question.\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs24 \cf5 \expnd0\expndtw0\kerning0
+\CocoaLigature1  CURLcode res = CURLE_OK;\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 //========================================================================================
+\f2\fs24 \cf5 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\f0\fs22 \cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./3\
+checking for the existence of a file with a special name...\
+check failed.\
+\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ltrace ./3\
+puts("checking for the existence of a "...checking for the existence of a file with a special name...\
+)                                                                                  = 60\
+__xstat(1, "iamspecial", 0x7ffd6a608e20)                                                                                     = -1\
+puts("check failed."check failed.\
+)                                                                                                        = 14\
++++ exited (status 1) +++\
+\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ mkdir iamspecial\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ls\
+0  1  2  3  4  howto.txt  iamspecial  md  README.md  secrets.txt\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./3\
+checking for the existence of a file with a special name...\
+correct file found.\
+checking for appropriate access rights...\
+correct rights found.\
+you win! the secret is:\
+UVtRR1hWAA==\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ \
+\
+//========================================================================================\
+\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ ./4\
+./4: error while loading shared libraries: lib361.so: cannot open shared object file: No such file or directory\
+cherna83@cs-sys1:~/CS361/HW/HW2/homework-2-cherna5$ \
+\
+(Do pwd for current directory then 
+\f3\fs24 \cf5 \expnd0\expndtw0\kerning0
+\CocoaLigature1 export LD_LIBRARY_PATH=\'85
+\f0\fs22 \cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 )\
+(Make a shared library i.e. Makefile)\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+cherna83@cs-sys1:~/homework-2-cherna5$ ltrace ./4\
+puts("this program tests the implement"...this program tests the implementation of a dynamically linked library.\
+)                            = 71\
+secretoperation(3, 6, 0x7f49087bc8c0, 0x7f49084df154)                  = 10\
+secretoperation(1, 2, 2, 0x7f49084df154)                               = 1\
+__assert_fail(0x556227a5e42e, 0x556227a5e417, 20, 0x556227a5e43a4: get_sum.c:20: main: Assertion `result == 4' failed.\
+ <no return ...>\
+--- SIGABRT (Aborted) ---\
++++ killed by SIGABRT +++\
+cherna83@cs-sys1:~/homework-2-cherna5$ vi get_sum.c\
+cherna83@cs-sys1:~/homework-2-cherna5$ vi get_sum.c\
+cherna83@cs-sys1:~/homework-2-cherna5$ make\
+gcc -c -Wall -Werror -fpic get_sum.c \
+gcc -shared -o lib361.so get_sum.o \
+gcc -L/AD-home/cherna83/homework-2-cherna5 demo.c -o demo -l361\
+cherna83@cs-sys1:~/homework-2-cherna5$ ./4\
+this program tests the implementation of a dynamically linked library.\
+you win! the secret is:\
+UFxQRFlZAQM=\
+cherna83@cs-sys1:~/homework-2-cherna5$ }
